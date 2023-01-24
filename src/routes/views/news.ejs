@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js + MediaStack </title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/header'); -%>
+    
+    <div class="wrapper">
+        <div class="news">
+            <% if(articles != null) { %> 
+            <% articles.forEach(function(article, index) { %> 
+                <a href="<%- article.url %>" class="news__newsBox" target="_blank">
+                    <% if(article.image != null) { %> 
+                        <img src="<%- article.image %>" alt="<% article.title %>">
+                    <% } else { %>
+                        <img src="https://mediastack.com/site_images/mediastack_logo_footer.svg" alt="default image">
+                    <% } %> 
+                    <h3>
+                        <%- article.title %>
+                    </h3>
+                    <p>
+                        <%- article.description %>                       
+                    </p>
+                    <p>
+                        Category: <%- article.category.toUpperCase() %> 
+                    </p>
+                    <p>
+                        Source: <%- article.source %>
+                    </p>
+                </a>
+            <% }) %> 
+            <% } else { %> 
+                <p>No posts found</p>
+            <% } %> 
+        </div>
+    </div>
+ 
+    <%- include('partials/footer'); -%>
+</body>
+</html>
